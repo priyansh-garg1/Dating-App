@@ -47,6 +47,7 @@ func FetchUserByApplicationId(driver neo4j.DriverWithContext, applicationId stri
 
 
 func InsertUser(driver neo4j.DriverWithContext, user User) error {
+    
 
     session := driver.NewSession(context.Background(), neo4j.SessionConfig{})
     defer session.Close(context.Background())
