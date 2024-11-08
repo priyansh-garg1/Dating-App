@@ -12,6 +12,7 @@ type UserController struct {
 	DB *actions.Database
 }
 
+
 func NewUserController(db *actions.Database) *UserController {
 	return &UserController{DB: db}
 }
@@ -42,7 +43,6 @@ func (uc *UserController) UserHandler(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, user)
-	return
 }
 
 func (uc *UserController) GetUsersWithNoConnectionHandler(c *gin.Context) {
@@ -69,7 +69,7 @@ func (uc *UserController)SwipeHandler(c *gin.Context) {
 	}
 
 
-	message, err := uc.DB.Neo4jSwipe(id, swipe, userId)
+	_, err := uc.DB.Neo4jSwipe(id, swipe, userId)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -77,11 +77,5 @@ func (uc *UserController)SwipeHandler(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"message": "swipe created successfully",
-		"swipe":   message,
 	})
-
-
-
-
-
 }

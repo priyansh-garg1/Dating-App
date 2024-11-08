@@ -155,8 +155,6 @@ func (db *Database) Neo4jSwipe(id string,swipe string,userId string) (bool, erro
 			return false, fmt.Errorf("error executing query: %v", err)
 		}
 
-		fmt.Println(result)
-
 		if result.Next(context.Background()) {
 			return true, nil 
 		}
