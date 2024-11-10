@@ -14,13 +14,14 @@ func ConnectToDb() (neo4j.DriverWithContext, error) {
     dbUser := os.Getenv("DB_USER")
     dbPassword := os.Getenv("DB_PASSWORD")
 
-    
+
     driver, err := neo4j.NewDriverWithContext(
         dbUri,
         neo4j.BasicAuth(dbUser, dbPassword, ""))
     if err != nil {
         return nil, err
     }
+    
 
     err = driver.VerifyConnectivity(ctx)
     if err != nil {
