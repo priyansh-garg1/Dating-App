@@ -22,6 +22,7 @@ func ConnectToDb() (neo4j.DriverWithContext, error) {
         return nil, err
     }
     
+    
 
     err = driver.VerifyConnectivity(ctx)
     if err != nil {

@@ -41,6 +41,7 @@ func main() {
 			"message": "Healthy",
 		})
 	})
+	
 	router.GET("/users/:applicationId", userController.UserHandler)
 	router.GET("/notconnecteduser/:applicationId", userController.GetUsersWithNoConnectionHandler)
 	router.GET("/connection/:applicationId/:userId", userController.SwipeHandler)
